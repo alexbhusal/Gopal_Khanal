@@ -1,10 +1,31 @@
+"use client";
+import Load from "@/Components/Animation/Load";
+import Footer from "@/Components/Footer";
+import Hero from "@/Components/Hero";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
   return (
-   <>
-   <div className="flex  items-center justify-center h-screen ">
-      <h1>Hello Its me Gopal Khanal </h1>
-   </div>
-   </>
+    
+    <>
+      {loading ? (
+        <div className="flex justify-center items-center h-screen">
+          <Load />
+        </div>
+      ):(
+        <>
+        <Hero/>
+        <Footer/>
+        </>
+      )}
+    </>
   );
 }
